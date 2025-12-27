@@ -16,9 +16,12 @@ print("Here's my tensor 2d type")
 print(tensor_2d.dtype)
 
 tensor_3d = torch.zeros(2, 3, 4)
+tensor_3d_1 = torch.ones(2, 3, 4)
+print("Here's my zero and ones arrays")
 print(tensor_3d)
+print(tensor_3d_1)
 
 ## Create tensor out of numpy array
 my_tensor = torch.tensor(np1)
-print("Hers's my_tensor xxxxxxx")
+print("Hers's my_tensor converted from a numpy array xxxxxxx")
 print(my_tensor)
