@@ -41,6 +41,14 @@ print(torch.div(tensor_b, tensor_a))
 
 
 # Remainder Modulus
+print("Here's the modulus programming xxxxxx")
 print(tensor_b, tensor_a)
-print(tensor_b % tensor_a) 
+print(tensor_b % tensor_a)
 
+# Remainer longhand
+print("This is remainder longhand xxxxxx")
+print(torch.remainder(tensor_b, tensor_a))
+
+# Exponents / power
+print("Here's Pytorch exponents xxxxxx")
+print(torch.pow(tensor_a, tensor_b))
