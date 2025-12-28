@@ -21,3 +21,26 @@ print(torch.add(tensor_a, tensor_b))
 print("Here's subtraction with Pytorch xxxxxx.")
 print(tensor_b - tensor_a)
 
+
+# Multiplication
+print("Here's multiplication with tensors xxxxxx.")
+print(tensor_a * tensor_b)
+
+
+# Multiplication Longhand
+print("Multiplication longhand xxxxxxx")
+print(torch.mul(tensor_a, tensor_b))
+
+
+# Division with tensors
+print("Here's divison with tensors which depending on modulus xxxxxxx")
+print(tensor_b / tensor_a)
+print("Here's division long hand xxxx")
+print(tensor_b, tensor_a)
+print(torch.div(tensor_b, tensor_a))
+
+
+# Remainder Modulus
+print(tensor_b, tensor_a)
+print(tensor_b % tensor_a) 
+
