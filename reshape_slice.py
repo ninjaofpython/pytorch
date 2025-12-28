@@ -44,5 +44,12 @@ print(my_torch5)
 print("Here's my new my_torch6 xxxxxxx")
 print(my_torch6)
 
-
-
+# Slicing
+my_torch7 = torch.arange(10)
+print("Here's my_torch7 sliced xxxxxxxx")
+print(my_torch7[5])
+my_torch8 = my_torch7.reshape(5,2)
+print("Here's my_torch8 xxxxxx")
+print(my_torch8)
+print("Here's my_torch8 grabbing only the second column xxxxxxx")
+print(my_torch8[:,1:])
