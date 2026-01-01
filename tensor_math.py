@@ -52,3 +52,8 @@ print(torch.remainder(tensor_b, tensor_a))
 # Exponents / power
 print("Here's Pytorch exponents xxxxxx")
 print(torch.pow(tensor_a, tensor_b))
+
+
+# Resignment
+print("Here's resignment xxxxxx.")
+print(tensor_a.add_(tensor_b))
