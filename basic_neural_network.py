@@ -42,6 +42,25 @@ my_df['species'] = my_df['species'].replace('virginica', 2.0)
 
 # Train Test Split! Sex X, y
 X = my_df.drop('species', axis=1)
-print(my_df.tail())
+y = my_df['species']
 
+# Convert these to numpy arrays
+X = X.values
+y = y.values
+
+from sklearn.model_selection import train_test_split
+
+# Train Test Split
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=41)
+# Convert X features to float tensors
+X_train = torch.FloatTensor(X_train)
+X_test = torch.FloatTensor(X_test)
+# Convert y labels to tensos long
+y_train = torch.LongTensor(y_train)
+y_test = torch.LongTensor(y_test)
+
+# Set the criteria of the model to measure the error, how far the predictions are from
+criterion = nn.CrossEntropyLoss()
+# Choose Adam Optimizer, lr = learning rate (if error doesn't go down after a bunch of iterations (epochs), lower our learning rate)
+optimizer = torch.optim.Adam(model.parameters(), lr=0.01)
 
