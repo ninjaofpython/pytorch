@@ -112,4 +112,11 @@ with torch.no_grad():
 
         print(f"{i+1}.) {str(y_val)} \t {y_test[i]}")
 
+        # Correct or not
+        if y_val.argmax().item() == y_test[i]:
+            correct +=1
+
+print(f"We got correct {correct} xxxxxxx")
+    
+
     
