@@ -97,7 +97,19 @@ plt.xlabel("Epoch")
 print(plt.show())
 
 
-    
-    
+# Evaluate Model on Test Data Set (validate model on test set)
+with torch.no_grad(): # Basically turn off back propogation
+    y_eval = model.forward(X_test) # X_test are features from our test set, y_eval will be predictions
+    loss = criterion(y_eval, y_test) # Find the loss or error
+    print("Here's the loss")
+    print(loss)
+
+
+correct = 0
+with torch.no_grad():
+    for i, data in enumerate(X_test):
+        y_val = model.forward(data)
+
+        print(f"{i+1}.) {str(y_val)} \t {y_test[i]}")
 
     
