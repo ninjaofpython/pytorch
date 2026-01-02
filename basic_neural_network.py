@@ -64,3 +64,40 @@ criterion = nn.CrossEntropyLoss()
 # Choose Adam Optimizer, lr = learning rate (if error doesn't go down after a bunch of iterations (epochs), lower our learning rate)
 optimizer = torch.optim.Adam(model.parameters(), lr=0.01)
 
+# Train our model
+# Epochs (One run through all the training data in our neural network)
+epochs = 200
+losses = []
+
+for i in range(epochs):
+    # Go forward and get a prediction, forward pass maybe?
+    y_pred = model.forward(X_train) # Get predicted results
+
+    # Measure the loss/error, it's going to be hight at first
+    loss = criterion(y_pred, y_train) # Predicted values vs the y_train
+
+    # Keep track of our losses
+    losses.append(loss.detach().numpy())
+
+    # Print every 10 epoch
+    if i % 10 == 0:
+        print(f"Epoch: {i} and loss: {loss}")
+
+    # Do some back propagation: take the error rate of forward propagation and feed it back
+    # Through the network to fine tune the weights
+    optimizer.zero_grad()
+    loss.backward()
+    optimizer.step()
+
+
+# Graph it out!
+plt.plot(range(epochs), losses)
+plt.ylabel("loss/error")
+plt.xlabel("Epoch")
+print(plt.show())
+
+
+    
+    
+
+    
