@@ -33,4 +33,15 @@ model = Model()
 url = 'https://gist.githubusercontent.com/curran/a08a1080b88344b0c8a7/raw/0e7a9b0a5d22642a06d3d5b9bcbad9890c8ee534/iris.csv'
 my_df = pd.read_csv(url)
 
+print(my_df.head())
+
+# Change last column from strings to integers
+my_df['species'] = my_df['species'].replace('setosa', 0.0)
+my_df['species'] = my_df['species'].replace('versicolor', 1.0)
+my_df['species'] = my_df['species'].replace('virginica', 2.0)
+
+# Train Test Split! Sex X, y
+X = my_df.drop('species', axis=1)
+print(my_df.tail())
+
 
