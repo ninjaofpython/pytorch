@@ -73,7 +73,7 @@ for i in range(epochs):
     # Go forward and get a prediction, forward pass maybe?
     y_pred = model.forward(X_train) # Get predicted results
 
-    # Measure the loss/error, it's going to be hight at first
+    # Measure the loss/error, it's going to be high at first
     loss = criterion(y_pred, y_train) # Predicted values vs the y_train
 
     # Keep track of our losses
@@ -110,13 +110,29 @@ with torch.no_grad():
     for i, data in enumerate(X_test):
         y_val = model.forward(data)
 
+        if y_test[i] == 0:
+            x = "setosa"
+        elif y_test[i] == 1:
+            x = 'versicolor'
+        else:
+            x = 'virginica'
+
         print(f"{i+1}.) {str(y_val)} \t {y_test[i]}")
 
         # Correct or not
         if y_val.argmax().item() == y_test[i]:
             correct +=1
 
-print(f"We got correct {correct} xxxxxxx")
+    print(f"We got correct {correct} xxxxxxx")
+
+
+new_iris = torch.tensor([4.7, 3.2, 1.3, 0.2])
+
+with torch.no_grad():
+    print("New iris xxxxxxx")
+    print(model(new_iris))
+
+
     
 
     
