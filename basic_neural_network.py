@@ -109,15 +109,16 @@ correct = 0
 with torch.no_grad():
     for i, data in enumerate(X_test):
         y_val = model.forward(data)
-
         if y_test[i] == 0:
             x = "setosa"
         elif y_test[i] == 1:
             x = 'versicolor'
         else:
             x = 'virginica'
-
-        print(f"{i+1}.) {str(y_val)} \t {y_test[i]}")
+        
+        # Will tell us what type of flower class our network thinks it is
+        print("Getting the flower class xxxxxxx")
+        print(f"{i+1}.) {str(y_val)} \t {y_test[i]} \t  {y_val.argmax().item()}")
 
         # Correct or not
         if y_val.argmax().item() == y_test[i]:
@@ -127,12 +128,24 @@ with torch.no_grad():
 
 
 new_iris = torch.tensor([4.7, 3.2, 1.3, 0.2])
+newer_iris = torch.tensor([5.9, 3.0, 5.1, 1.8])
 
 with torch.no_grad():
     print("New iris xxxxxxx")
     print(model(new_iris))
+    print("Here's the newer_iris xxxxxxx")
+    print(model(newer_iris))
 
 
-    
+# Save the Neural Network model
+torch.save(model.state_dict(), 'my_really_simple_iris_model.pt')
+
+# How to load the saved model
+new_model = Model()
+new_model.load_state_dict(torch.load('my_really_simple_iris_model.pt'))
+
+# Make sure it loaded correctly
+print("Here's to make sure the model loaded correctly.  xxxxxxx")
+print(new_model.eval())
 
     
