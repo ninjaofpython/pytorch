@@ -2,7 +2,7 @@ import nltk
 import numpy as np
 import pandas as pd
 
-nltk.download("all")
+nltk.download("stopwords")
 
 dataset = pd.read_csv('https://raw.githubusercontent.com/futurexskill/ml-model-deployment/main/Restaurant_Reviews.tsv.txt', delimiter= '\t', quoting = 3)
 print("Here's the dataset head xxxxxx")
@@ -65,7 +65,7 @@ ytest_ = torch.from_numpy(y_test)
 Xtrain_.shape, ytrain_.shape
 Xtest_.shape, ytest_.shape
 
-input_size=467
+input_size= X_train.shape[1]
 output_size=2
 hidden_size=500
 
@@ -115,7 +115,20 @@ sample2 = ["bad performance by India in the match"]
 
 sample2 = vectorizer.transform(sample2).toarray()
 
+sentiment2 = model(torch.from_numpy(sample2).float())
+print("Here's sentiment 2 xxxxxx")
+print(sentiment2)
 
+model.state_dict()
+
+torch.save(model.state_dict(), 'text_classifier_pytorch')
+
+import pickle
+with open('tfidfmodel.pickle', 'wb') as file:
+    pickle.dump(vectorizer, file)
+
+
+print("Model and Vectorizer saved successfully.")
 
 
 
